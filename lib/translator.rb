@@ -17,7 +17,7 @@ end
     get_meaning: meaning,
     get_emoticon: emoticon
   }
-  new_data
+  return new_data
 end
 
 def get_japanese_emoticon(file_path, emoticon)
