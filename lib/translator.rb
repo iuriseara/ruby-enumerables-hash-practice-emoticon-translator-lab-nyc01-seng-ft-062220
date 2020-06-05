@@ -8,9 +8,9 @@ def load_library(file)
   meaning = {}
   emoticon = {}
 
-  data.each do |key, value|
-    meaning[value[1]] = key
-    emoticon[value[0]] = value[1]
+  data.each do |k, v|
+    meaning[v[1]] = k
+    emoticon[v[0]] = v[1]
 end
 
   new_data = {
