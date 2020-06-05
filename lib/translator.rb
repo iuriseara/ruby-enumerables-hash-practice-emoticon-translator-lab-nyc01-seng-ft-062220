@@ -3,7 +3,7 @@ require 'yaml'
 
 def load_library(library)
   # code goes
-
+  data = YAML.load_file(library)
   meaning = {}
   emoticon = {}
 
