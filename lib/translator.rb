@@ -14,10 +14,11 @@ def load_library(file)
 end
 
   new_data = {
-    get_meaning: meaning,
-    get_emoticon: emoticon
-  }
-  return new_data
+     get_meaning: meaning,
+     get_emoticon: emoticon
+   }
+
+   new_data
 end
 
 def get_japanese_emoticon(file_path, emoticon)
