@@ -22,7 +22,7 @@ end
 
 def get_japanese_emoticon(file_path, emoticon)
   # code goes here
-  data = YAML.load_file(file_path)
+  data = load_file(file_path)
 
   japanese_emoticon = data[:get_emoticon].values_at(emoticon).join
 
