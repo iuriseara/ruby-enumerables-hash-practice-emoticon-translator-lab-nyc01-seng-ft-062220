@@ -3,7 +3,7 @@ require 'yaml'
 
 def load_library(library)
   # code goes
-  data = YAML.load_file(library)
+
   meaning = {}
   emoticon = {}
 
@@ -21,7 +21,14 @@ end
 
 def get_japanese_emoticon(file_path, emoticon)
   # code goes here
+  data = YAML.load_file(library)
 
+  japanese_emoticon = data[:get_emoticon].values_at(emoticon).join
+
+  if japanese_emoticon.length < 1
+    puts "Sorry, that emoticon was not found"
+  else
+    japanese_emoticon
 end
 
 def get_english_meaning
