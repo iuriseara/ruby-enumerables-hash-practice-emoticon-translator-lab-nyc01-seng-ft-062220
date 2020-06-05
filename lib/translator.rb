@@ -21,16 +21,17 @@ end
    new_data
 end
 
-def get_japanese_emoticon(file_path, emoticon)
+def get_japanese_emoticon(file, emoticon)
   # code goes here
-  data = load_library(file_path)
+  data = load_library(file)
 
-  japanese_emoticon = data[:get_emoticon].values_at(emoticon).join
 
-  if japanese_emoticon.length < 1
-    puts "Sorry, that emoticon was not found"
+  jp_emoticon = data[:get_emoticon].values_at(emoticon).join
+
+  if jp_emoticon.length < 1
+    p 'Sorry, that emoticon was not found'
   else
-    return japanese_emoticon
+    jp_emoticon
   end
 end
 
