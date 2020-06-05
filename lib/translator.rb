@@ -4,14 +4,19 @@ require 'yaml'
 def load_library(library)
   # code goes
   data = YAML.load_file(library)
-  get_meaning = {}
-  get_emoticon = {}
+  meaning = {}
+  emoticon = {}
 
   data.each do |key, value|
-    get_meaning[value[1]] = key
-    get_emoticon[value[0]] = value[1]
+    meaning[value[1]] = key
+    emoticon[value[0]] = value[1]
 end
 
+  new_data = {
+    get_meaning: meaning,
+    get_emoticon: emoticon
+  }
+  new_data
 end
 
 def get_japanese_emoticon(file_path, emoticon)
