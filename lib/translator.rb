@@ -1,53 +1,34 @@
 # require modules here
 require 'yaml'
 
-def load_library(file)
-  # code goes
-  data = YAML.load_file(file)
+def load_library(path)
+  emoticons = YAML.load_file(path)
+  emote_hash = {:get_meaning => {}, :get_emoticon => {}}
 
-  meaning = {}
-  emoticon = {}
-
-  data.each do |k, v|
-    meaning[v[1]] = k
-    emoticon[v[0]] = v[1]
-end
-
-  new_data = {
-     get_meaning: meaning,
-     get_emoticon: emoticon
-   }
-
-   new_data
-end
-
-
-
-def get_japanese_emoticon(file, emoticon)
-  # code goes here
-  data = load_library(file)
-
-
-  jp_emoticon = data[:get_emoticon].values_at(emoticon).join
-
-  if jp_emoticon.length < 1
-    p 'Sorry, that emoticon was not found'
-  else
-    jp_emoticon
+  emoticons.each do |english_word, emote_set|
+    emote_hash[:get_emoticon][emote_set.first] = emote_set.last
+    emote_hash[:get_meaning][emote_set.last] = english_word
   end
-end
+  return emote_hash
 
 
 
-def get_english_meaning(file, emoticon)
-  # code goes here
-  data = load_library(file)
+  def get_japanese_emoticon(path, emoticon)
+    emoticon_hash = load_library(path)
+    result = emoticon_hash[:get_emoticon][emoticon]
+    if result == nil
+      result = "Sorry, that emoticon was not found"
+    end
+    return result
+  end
 
-   meaning = data[:get_meaning].values_at(emoticon).join
 
-   if meaning.length < 1
-     p 'Sorry, that emoticon was not found'
-   else
-     meaning
-   end
-end
+
+  def get_english_meaning(path, emoticon)
+    emoticon_hash = load_library(path)
+    result = emoticon_hash[:get_meaning][emoticon]
+    if result == nil
+      result = "Sorry, that emoticon was not found"
+    end
+    return result
+  end
