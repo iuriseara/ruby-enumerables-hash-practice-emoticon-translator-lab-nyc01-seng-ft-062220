@@ -3,7 +3,13 @@ require 'yaml'
 
 def load_library(library)
   # code goes
+  data = YAML.load_file(library)
+  get_meaning = {}
+  get_emoticon = {}
 
+  data.each do |key, value|
+    get_meaning[value[1]] = key
+    get_emoticon[value[0]] = value[1]
 end
 
 end
